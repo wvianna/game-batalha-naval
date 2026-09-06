@@ -106,8 +106,10 @@ game-batalha-naval/
 - Acertos exibem marcadores vermelhos de dano e as silhuetas do painel apagam
   quando a embarcação afunda.
 - Sons sintetizados via **Web Audio API** (sem arquivos): `splash` quando cai na
-  água, `impacto` ao atingir um navio e `explosão` ao afundá-lo. O primeiro som
-  é liberado pelo primeiro clique (requisito de autoplay dos navegadores).
+  água, `impacto` ao atingir um navio e `explosão` ao afundá-lo. Há controles de
+  som no topo: botão **mudo/ativar** (🔊/🔇) e **volume**. O áudio é desbloqueado
+  no primeiro clique (autoplay) e, ao reativar o som, um tom de teste confirma
+  que está funcionando.
 
 ## Fluxo geral
 
