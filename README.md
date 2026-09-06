@@ -29,6 +29,14 @@ python3 -m http.server 8000
 # acesse http://localhost:8000
 ```
 
+Para subir/derrubar o servidor em segundo plano com um comando:
+
+```bash
+./start.sh            # inicia o servidor em http://localhost:8000
+./stop.sh             # encerra o servidor
+PORT=8080 ./start.sh  # porta personalizada
+```
+
 ## Como testar
 
 ```bash

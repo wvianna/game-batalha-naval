@@ -10,6 +10,9 @@ coverage/
 *.log
 npm-debug.log*
 
+# Runtime local (scripts start.sh/stop.sh)
+.server.pid
+
 # Ambiente / segredos
 .env
 .env.*
