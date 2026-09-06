@@ -6,6 +6,10 @@ enfrenta uma IA que alterna entre **Modo Busca** (paridade de tabuleiro de
 xadrez) e **Modo Caça** (pilha LIFO), simulando estratégia humana sem acesso ao
 tabuleiro privado do jogador.
 
+## Captura de tela
+
+![Batalha Naval — Humano vs. IA](docs/image/screenshot.png)
+
 ## Objetivo
 
 Derrotar a frota inimiga primeiro: são **17 acertos** para afundar as 5
