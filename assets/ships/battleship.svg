@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 10" role="img" aria-label="Encouraçado">
+  <defs>
+    <linearGradient id="hull" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#cddade"/>
+      <stop offset="0.55" stop-color="#a3b6c4"/>
+      <stop offset="1" stop-color="#6f8598"/>
+    </linearGradient>
+  </defs>
+
+  <!-- casco -->
+  <rect x="0.6" y="1.2" width="38.8" height="7.6" rx="1.6" fill="url(#hull)" stroke="#3f5567" stroke-width="0.3"/>
+  <!-- convés -->
+  <rect x="1.3" y="1.9" width="37.4" height="6.2" rx="1.1" fill="#b4c6d2"/>
+
+  <!-- cinturão de couraça -->
+  <line x1="2" y1="5" x2="38" y2="5" stroke="#7c93a5" stroke-width="0.25" opacity="0.6"/>
+
+  <!-- torres principais (proa → popa) -->
+  <g>
+    <rect x="3.2" y="3.1" width="3.8" height="3.8" rx="1.6" fill="#5c7287" stroke="#3f5162"/>
+    <rect x="4.0" y="4.1" width="2.4" height="1.8" rx="0.8" fill="#394d60"/>
+    <rect x="16.4" y="3.1" width="3.8" height="3.8" rx="1.6" fill="#5c7287" stroke="#3f5162"/>
+    <rect x="17.2" y="4.1" width="2.4" height="1.8" rx="0.8" fill="#394d60"/>
+    <rect x="29.4" y="3.1" width="3.8" height="3.8" rx="1.6" fill="#5c7287" stroke="#3f5162"/>
+    <rect x="30.2" y="4.1" width="2.4" height="1.8" rx="0.8" fill="#394d60"/>
+  </g>
+
+  <!-- superestrutura central -->
+  <rect x="20.2" y="2.3" width="6.6" height="5.4" rx="1.2" fill="#596d81" stroke="#3c4e5f"/>
+  <rect x="21.4" y="3.1" width="4.2" height="2.2" rx="0.7" fill="#43586b"/>
+  <rect x="23.0" y="5.6" width="1.0" height="1.6" fill="#394d60"/>
+</svg>

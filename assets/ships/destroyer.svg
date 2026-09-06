@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 10" role="img" aria-label="Destróier">
+  <defs>
+    <linearGradient id="hull" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d3e0e6"/>
+      <stop offset="0.55" stop-color="#a7bac6"/>
+      <stop offset="1" stop-color="#738a9c"/>
+    </linearGradient>
+  </defs>
+
+  <!-- casco esguio -->
+  <rect x="0.6" y="2.2" width="28.8" height="5.6" rx="1.6" fill="url(#hull)" stroke="#3f5567" stroke-width="0.3"/>
+
+  <!-- convés -->
+  <rect x="1.2" y="2.7" width="27.6" height="4.6" rx="1.2" fill="#b7c9d3"/>
+
+  <!-- canhão dianteiro -->
+  <circle cx="4.6" cy="5" r="1.5" fill="#5c7287" stroke="#3f5162"/>
+  <rect x="5.2" y="4.7" width="2.2" height="0.6" rx="0.3" fill="#394d60"/>
+  <rect x="3.4" y="4.7" width="2.2" height="0.6" rx="0.3" fill="#394d60"/>
+
+  <!-- lançadores de mísseis -->
+  <rect x="12.3" y="3.2" width="2.4" height="1.8" rx="0.6" fill="#667c90"/>
+  <rect x="12.3" y="5.0" width="2.4" height="1.8" rx="0.6" fill="#667c90"/>
+
+  <!-- mastro/radar -->
+  <rect x="15.6" y="4.3" width="1.2" height="1.4" rx="0.4" fill="#394d60"/>
+  <circle cx="16.2" cy="3.9" r="1.0" fill="#43586b" stroke="#2c3d4d"/>
+  <line x1="15.4" y1="3.0" x2="17.0" y2="3.0" stroke="#394d60" stroke-width="0.5"/>
+  <line x1="16.2" y1="3.0" x2="16.2" y2="2.3" stroke="#394d60" stroke-width="0.5"/>
+
+  <!-- canhão traseiro -->
+  <circle cx="24.6" cy="5" r="1.2" fill="#5c7287" stroke="#3f5162"/>
+  <rect x="22.9" y="4.7" width="1.8" height="0.6" rx="0.3" fill="#394d60"/>
+</svg>

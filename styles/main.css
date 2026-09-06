@@ -123,6 +123,8 @@ body {
 
 /* ------------------------------ Boards ------------------------------- */
 .board {
+  position: relative;
+  overflow: hidden;
   display: grid;
   grid-template-columns: 1.35rem repeat(10, 1fr);
   width: min(92vw, 62vh, 560px);
@@ -186,6 +188,41 @@ body {
 .cell--invalid {
   outline: 3px solid #ffd166;
   background: rgba(255, 209, 102, 0.35);
+}
+
+/* Arte das embarcações sobre o tabuleiro */
+.ship-overlay {
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+}
+.ship-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.55));
+}
+.ship-art--v {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+.ship-overlay--dim {
+  opacity: 0.92;
+}
+.ship-overlay--dim .ship-art {
+  filter: grayscale(1) brightness(0.5) drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
+}
+.damage-marker {
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 42%, #ffe3d6 0 10%, #ff7a5c 42%, #c81e1e 100%);
+  border: 1px solid rgba(255, 220, 190, 0.85);
+  box-shadow: 0 0 6px rgba(255, 90, 70, 0.7);
 }
 
 /* ------------------------------- Cards ------------------------------- */
@@ -275,34 +312,45 @@ body {
 
 .ship-chip {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: 0.4rem;
-  padding: 0.25rem 0;
+  gap: 2px;
+  padding: 4px 2px;
   border-bottom: 1px dashed rgba(120, 180, 255, 0.12);
-  font-size: 0.78rem;
 }
-.ship-chip--sunk {
-  opacity: 0.55;
+.ship-chip__img {
+  height: 16px;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.45));
+}
+.ship-chip--sunk .ship-chip__img {
+  filter: grayscale(1) brightness(0.55);
+  opacity: 0.85;
+}
+.ship-chip__name {
+  font-size: 0.68rem;
+  color: var(--text);
+  text-align: center;
+  line-height: 1.1;
+}
+.ship-chip--sunk .ship-chip__name {
   color: #e0a0a0;
   text-decoration: line-through;
 }
-.ship-chip__dots {
+.ship-chip__pips {
   display: flex;
-  gap: 3px;
+  gap: 2px;
+  margin-top: 1px;
 }
-.dot {
-  width: 9px;
-  height: 9px;
+.pip {
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
-  background: var(--ship);
+  background: #2c4a68;
   border: 1px solid rgba(255, 255, 255, 0.25);
 }
-.dot--hit {
+.pip--hit {
   background: var(--hit-bright);
-}
-.dot--sunk {
-  background: #9c4a4a;
 }
 
 /* -------------------------------- Log -------------------------------- */

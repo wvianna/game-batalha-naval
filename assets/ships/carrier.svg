@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 10" role="img" aria-label="Porta-aviões">
+  <defs>
+    <linearGradient id="hull" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d9e4ec"/>
+      <stop offset="0.6" stop-color="#aebfd0"/>
+      <stop offset="1" stop-color="#7a91a4"/>
+    </linearGradient>
+    <linearGradient id="deck" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c7d7e3"/>
+      <stop offset="1" stop-color="#97adbf"/>
+    </linearGradient>
+  </defs>
+
+  <!-- casco -->
+  <rect x="0.7" y="1.1" width="48.6" height="7.8" rx="1.5" fill="url(#hull)" stroke="#3f5567" stroke-width="0.3"/>
+
+  <!-- convés de voo -->
+  <rect x="1.4" y="1.7" width="47.2" height="6.6" rx="1.1" fill="url(#deck)"/>
+
+  <!-- linha central (pista de pouso) -->
+  <line x1="27" y1="2.1" x2="27" y2="7.9" stroke="#7c93a5" stroke-width="0.45" stroke-dasharray="0.9 1.1"/>
+
+  <!-- pista diagonal à proa -->
+  <path d="M3.2 5.4 L15.5 2.6" stroke="#eef4f8" stroke-width="0.55" fill="none" opacity="0.9"/>
+  <path d="M3.2 6.2 L16.6 3.0" stroke="#eef4f8" stroke-width="0.55" fill="none" opacity="0.9"/>
+  <path d="M3.2 7.0 L17.7 3.4" stroke="#eef4f8" stroke-width="0.55" fill="none" opacity="0.9"/>
+
+  <!-- catapultas -->
+  <line x1="5.5" y1="3.0" x2="12" y2="3.0" stroke="#5f7d94" stroke-width="0.4" opacity="0.7"/>
+  <line x1="5.5" y1="6.9" x2="12" y2="6.9" stroke="#5f7d94" stroke-width="0.4" opacity="0.7"/>
+
+  <!-- ilha / superestrutura -->
+  <rect x="38" y="2.0" width="6.4" height="5.6" rx="1.3" fill="#596d81" stroke="#3c4e5f"/>
+  <rect x="39.1" y="2.7" width="4.2" height="2.6" rx="0.8" fill="#43586b"/>
+  <rect x="39.9" y="5.5" width="2.6" height="1.0" rx="0.4" fill="#e6edf3"/>
+</svg>

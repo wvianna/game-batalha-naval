@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 10" role="img" aria-label="Submarino">
+  <defs>
+    <linearGradient id="hull" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8aa0ad"/>
+      <stop offset="0.45" stop-color="#5b7180"/>
+      <stop offset="1" stop-color="#3a4d5b"/>
+    </linearGradient>
+    <linearGradient id="sail" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4a6172"/>
+      <stop offset="1" stop-color="#2f4150"/>
+    </linearGradient>
+  </defs>
+
+  <!-- casco (perfil fino) -->
+  <path d="M0.8 5 C0.8 2.6 3.2 2.2 6 2.2 L24 2.2 C27.6 2.2 29.4 3.2 29.4 5 C29.4 6.8 27.6 7.8 24 7.8 L6 7.8 C3.2 7.8 0.8 7.4 0.8 5 Z"
+        fill="url(#hull)" stroke="#2c3d4d" stroke-width="0.3"/>
+
+  <!-- linha de casco -->
+  <line x1="3" y1="5.2" x2="27" y2="5.2" stroke="#d6e2e9" stroke-width="0.35" opacity="0.6"/>
+
+  <!-- vela (torre de comando) -->
+  <rect x="12.2" y="1.2" width="5.6" height="7.6" rx="2.2" fill="url(#sail)" stroke="#23333f"/>
+  <rect x="13.6" y="3.2" width="2.8" height="3.6" rx="1" fill="#d9e5ec"/>
+  <path d="M12.2 1.2 L15 3.4 M17.8 1.2 L15 3.4" stroke="#23333f" stroke-width="0.4" fill="none"/>
+
+  <!-- lemes / hélice -->
+  <path d="M28.6 3.4 L30 3.4 M28.6 5 L30.4 5 M28.6 6.6 L30 6.6" stroke="#23333f" stroke-width="0.5" fill="none"/>
+</svg>

@@ -67,19 +67,27 @@ function buildChip(ship, grid) {
   const row = document.createElement('div');
   row.className = `ship-chip${sunk ? ' ship-chip--sunk' : ''}`;
 
-  const name = document.createElement('span');
-  name.className = 'ship-chip__name';
-  name.textContent = sunk ? `${ship.name} ✕` : ship.name;
+  const thumb = document.createElement('img');
+  thumb.className = 'ship-chip__img';
+  thumb.src = `assets/ships/${ship.id}.svg`;
+  thumb.alt = ship.name;
+  thumb.draggable = false;
+  thumb.title = `${ship.name} — ${hits}/${ship.size} células atingidas`;
+  thumb.style.width = `${ship.size * 15}px`;
 
-  const dots = document.createElement('span');
-  dots.className = 'ship-chip__dots';
+  const label = document.createElement('span');
+  label.className = 'ship-chip__name';
+  label.textContent = sunk ? `${ship.name} ✕` : ship.name;
+
+  const hitsPips = document.createElement('span');
+  hitsPips.className = 'ship-chip__pips';
   for (let i = 0; i < ship.size; i++) {
-    const dot = document.createElement('span');
-    dot.className = `dot${i < hits ? ' dot--hit' : ''}${sunk ? ' dot--sunk' : ''}`;
-    dots.append(dot);
+    const pip = document.createElement('span');
+    pip.className = `pip${i < hits ? ' pip--hit' : ''}`;
+    hitsPips.append(pip);
   }
 
-  row.append(name, dots);
+  row.append(thumb, label, hitsPips);
   return row;
 }
 

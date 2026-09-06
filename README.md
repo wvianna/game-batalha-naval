@@ -52,6 +52,8 @@ game-batalha-naval/
 ├── index.html              # entrada da aplicação
 ├── styles/
 │   └── main.css            # layout, grid, responsividade
+├── assets/
+│   └── ships/              # arte SVG das embarcações (5 classes)
 ├── src/
 │   ├── domain/             # motor puro (sem DOM): regras e modelo
 │   │   ├── constants.js    # GRID_SIZE e orientações
@@ -96,6 +98,16 @@ game-batalha-naval/
 - Disparo em célula já atacada ou fora do grid é inválido (bloqueado).
 - Vitória declarada exatamente após o **17º acerto**.
 - **Reset Game** reinicia matrizes e logs sem recarregar a página.
+
+## Feedback visual e sonoro
+
+- Embarcações desenhadas como arte SVG contínua sobre as células (rotacionadas
+  quando verticais); naufrágios revelam a silhueta no tabuleiro inimigo.
+- Acertos exibem marcadores vermelhos de dano e as silhuetas do painel apagam
+  quando a embarcação afunda.
+- Sons sintetizados via **Web Audio API** (sem arquivos): `splash` quando cai na
+  água, `impacto` ao atingir um navio e `explosão` ao afundá-lo. O primeiro som
+  é liberado pelo primeiro clique (requisito de autoplay dos navegadores).
 
 ## Fluxo geral
 

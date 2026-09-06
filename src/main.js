@@ -5,6 +5,7 @@ import { initBoard, renderBoard } from './ui/board.js';
 import { initSetupUI } from './ui/setup.js';
 import { renderMessage, renderLog, renderFleetStatus } from './ui/log.js';
 import { formatCoord } from './ui/format.js';
+import { playShotSound } from './ui/sounds.js';
 
 const playerBoardEl = document.getElementById('player-board');
 const enemyBoardEl = document.getElementById('enemy-board');
@@ -64,6 +65,8 @@ function flashCoordFeedback(boardEl, row, col, reason) {
   setTimeout(() => msg.remove(), 2000);
 }
 
+let lastEventCount = 0;
+
 function render(snap) {
   renderBoard(playerBoardEl, snap.playerGrid, 'own');
   renderBoard(enemyBoardEl, snap.enemyGrid, 'enemy');
@@ -72,6 +75,17 @@ function render(snap) {
   renderFleetStatus(playerFleetEl, 'Sua frota', snap.playerGrid);
   renderFleetStatus(enemyFleetEl, 'Frota inimiga', snap.enemyGrid);
   setupUI.refresh(snap);
+
+  // Efeitos sonoros para eventos novos (ex.: água, impacto, naufrágio).
+  if (snap.events.length >= lastEventCount) {
+    for (let i = lastEventCount; i < snap.events.length; i++) {
+      const event = snap.events[i];
+      if (event.result) playShotSound(event.result);
+    }
+    lastEventCount = snap.events.length;
+  } else {
+    lastEventCount = 0; // reset limpa o histórico
+  }
 
   // Banner de turno.
   let bannerText;
