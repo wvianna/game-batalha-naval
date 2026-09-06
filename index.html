@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Batalha Naval — Humano vs. IA</title>
+  <meta name="description" content="Batalha Naval web: humano contra uma IA com busca por paridade e caça stack-based." />
+  <link rel="stylesheet" href="styles/main.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar__brand">
+      <h1>⚓ Batalha Naval</h1>
+      <p class="topbar__sub">Humano vs. IA · domine os mares</p>
+    </div>
+    <div id="turn-banner" class="turn-banner turn-banner--neutral" role="status" aria-live="polite"></div>
+  </header>
+
+  <main class="layout">
+    <section class="board-panel" aria-label="Seu tabuleiro de defesa">
+      <h2 class="board-title">🛡 Sua frota <span class="board-title__note">defesa</span></h2>
+      <div id="player-board" class="board" role="grid" aria-label="Tabuleiro de defesa"></div>
+    </section>
+
+    <section class="board-panel" aria-label="Tabuleiro inimigo de ataque">
+      <h2 class="board-title">🎯 Frota inimiga <span class="board-title__note">ataque</span></h2>
+      <div id="enemy-board" class="board" role="grid" aria-label="Tabuleiro de ataque"></div>
+    </section>
+
+    <aside class="side">
+      <section id="setup-panel" class="card" aria-label="Preparação">
+        <h3>Posicionar frota</h3>
+        <p id="setup-hint" class="hint"></p>
+        <div class="btn-row">
+          <button id="btn-rotate" type="button" class="btn">↻ Rotacionar</button>
+          <button id="btn-random" type="button" class="btn">🎲 Aleatório</button>
+        </div>
+        <button id="btn-start" type="button" class="btn btn--primary" disabled>⚔ Iniciar batalha</button>
+        <button id="btn-clear" type="button" class="btn btn--ghost">Limpar</button>
+      </section>
+
+      <section class="card" aria-label="Painel de guerra">
+        <h3>Painel de guerra</h3>
+        <div id="message" class="message" role="status" aria-live="polite"></div>
+        <div class="fleet-columns">
+          <div id="player-fleet" class="fleet"></div>
+          <div id="enemy-fleet" class="fleet"></div>
+        </div>
+      </section>
+
+      <button id="btn-reset" type="button" class="btn btn--danger" hidden>↺ Reiniciar partida</button>
+
+      <section class="card log-card" aria-label="Registro da batalha">
+        <h3>Log de batalha</h3>
+        <ol id="log" class="log"></ol>
+      </section>
+    </aside>
+  </main>
+
+  <footer class="foot">
+    <p>Clique em uma célula do tabuleiro inimigo para atirar · Rotacione os navios antes de posicioná-los.</p>
+  </footer>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

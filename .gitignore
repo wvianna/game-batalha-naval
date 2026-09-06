@@ -1,0 +1,25 @@
+# Dependências
+node_modules/
+
+# Build / artefatos
+dist/
+build/
+coverage/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Ambiente / segredos
+.env
+.env.*
+!.env.example
+
+# IDE / SO
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Sistema
+*~

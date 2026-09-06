@@ -1,0 +1,71 @@
+Especificação de Requisitos: Jogo Batalha Naval Web (Humano vs. IA)
+
+1. Visão Geral e Objetivos do Sistema
+
+A transição do clássico jogo de tabuleiro Batalha Naval para uma aplicação web moderna exige uma abstração rigorosa das mecânicas físicas para o domínio digital. Como Arquiteto de Sistemas, o objetivo é garantir que a fidelidade tática seja preservada através de uma infraestrutura escalável e resiliente. Esta especificação detalha o desenvolvimento de uma aplicação Human vs. CPU, focada em uma implementação "Vanilla" de alta performance, onde a lógica de jogo e a inteligência do oponente são priorizadas. A clareza nestes objetivos iniciais é o que permite mitigar ambiguidades no tratamento de estados de jogo e estabelece um padrão de qualidade superior para a interação entre o usuário e o agente automatizado. Esta visão fundamenta a arquitetura técnica que suportará o motor de combate.
+
+2. Arquitetura Tecnológica e Requisitos Não Funcionais
+
+A pilha tecnológica selecionada baseia-se em HTML5, CSS3 e JavaScript (ES6+). Para a renderização dos tabuleiros, deve-se utilizar CSS Grid, que oferece uma estrutura nativa e performática para gerenciar as coordenadas 10x10, evitando o overhead de bibliotecas de terceiros.
+
+* Performance e DOM: O gerenciamento das células deve ser feito via Event Delegation no container pai do tabuleiro para otimizar o uso de memória e a velocidade de resposta aos cliques.
+* Design Responsivo: Uso de unidades relativas (vw/vh) e Media Queries para garantir jogabilidade em dispositivos mobile e desktop.
+* Compatibilidade Cross-browser: O código deve ser compatível com motores Chromium, Gecko e WebKit, garantindo comportamento consistente em diferentes navegadores.
+* Estado da IA: O processamento da decisão da IA deve ser assíncrono (Web Workers ou setTimeout para simular latência de "pensamento"), não excedendo 800ms de tempo de resposta.
+
+A escolha por tecnologias web puras justifica-se pela portabilidade total e pela facilidade de manutenção de um estado global sem a complexidade de frameworks pesados, garantindo que a lógica interna do jogo seja o centro da aplicação.
+
+3. Mecânicas de Jogo e Regras de Negócio (Core Engine)
+
+O motor do jogo deve traduzir a lógica tradicional em uma matriz bidimensional de dados, onde a integridade das regras define a aceitação do usuário. O sistema operará sob um sistema de coordenadas cartesianas (Eixo X: 1-10, Eixo Y: A-J).
+
+Atributo	Especificação Técnica
+Dimensões do Tabuleiro	Matriz 10x10 (100 células por jogador).
+Coordenadas	Linhas A-J, Colunas 1-10.
+Frota (17 Acertos para Vitória)	1x Porta-aviões (5), 1x Encouraçado (4), 1x Destróier (3), 1x Submarino (3), 1x Fragata (2).
+Posicionamento	Orientação Horizontal/Vertical. Proibida sobreposição e extrapolamento de bordas.
+Sistema de Turnos	Sequencial. Humano inicia. Alternância obrigatória após disparo validado.
+
+O rigor na aplicação destas regras, especialmente a contagem exata de 17 acertos para o estado de vitória, evita estados de erro e garante uma competição justa. Estas definições ditam diretamente os requisitos funcionais expostos a seguir.
+
+4. Requisitos Funcionais e Fluxo de Interação
+
+O mapeamento das ações do usuário deve contemplar validações rigorosas e feedback imediato para elevar a experiência além da versão física.
+
+1. Gestão de Frota: Interface para posicionamento manual (drag-and-drop ou clique/rotação) e um gerador de posicionamento aleatório baseado em algoritmos de colisão.
+2. Validação de Jogadas Ilegais: O sistema deve impedir disparos em coordenadas já atacadas ou fora do grid, tanto para o humano quanto para a IA.
+3. Mecanismo de Disparo e Feedback: Ao clicar no tabuleiro adversário, o sistema deve processar o estado da célula na matriz e retornar visualmente: "Água" (miss), "Acerto" (hit) ou "Naufrágio" (sunk).
+4. Gestão de Estado e Persistência: Implementação de função de "Reset Game" que reinicializa as matrizes de estado sem necessidade de refresh da página, mantendo a integridade da sessão.
+
+A automação da detecção de naufrágio elimina erros humanos e acelera o ritmo da partida, enquanto a validação de movimentos previne a degradação da lógica do jogo.
+
+5. Lógica de Inteligência Artificial (Oponente Automatizado)
+
+O diferencial desta especificação reside na sofisticação da IA, que deve simular uma estratégia humana sem "trapacear". A IA não possui acesso ao array de posicionamento do jogador; ela interage apenas com uma máscara de estado (hits/misses).
+
+* Modo Busca (Estratégia de Paridade): A IA deve realizar disparos em um padrão de tabuleiro de xadrez (coordenadas onde (x + y) % 2 == 0). Isso reduz pela metade o número de disparos necessários para localizar a menor embarcação (Fragata - 2 células), otimizando a busca.
+* Modo Caça (Stack-based Approach): Ao confirmar um "Acerto", a IA empilha as quatro coordenadas adjacentes (N, S, L, O) em uma estrutura de Pilha (LIFO). Ela passará a disparar nestas coordenadas até que a embarcação seja afundada ou a pilha se esvazie.
+* Transição de Estado: Após afundar um navio (naufrágio confirmado), a IA deve limpar a pilha de caça e retornar imediatamente ao Modo Busca por paridade.
+
+Esta abordagem algorítmica aumenta significativamente a "rejogabilidade" e o engajamento emocional do jogador ao enfrentar um oponente que demonstra comportamento lógico e adaptativo.
+
+6. Interface do Usuário (UI) e Experiência (UX)
+
+Para jogos de estratégia, a clareza da informação é primordial para evitar a "confusão de frações de segundo".
+
+* Layout Consistente: O Tabuleiro de Defesa do jogador deve estar à esquerda e o Tabuleiro de Ataque (IA) obrigatoriamente à direita, estabelecendo um fluxo visual de "ação e reação".
+* Feedback Narrativo: Um painel de mensagens de log deve traduzir eventos lógicos em narrativa (ex: "Radar detectou impacto em B-7! Fragata inimiga afundada").
+* Indicadores de Status: Painel lateral com silhuetas das embarcações que escurecem ou mudam de cor conforme são afundadas, permitindo leitura rápida do progresso da guerra.
+* Visual Consistency: O design deve usar cores de alto contraste (Azul profundo para água, Vermelho vibrante para acertos, Cinza fosco para disparos perdidos).
+
+7. Conclusão e Critérios de Aceite
+
+Esta especificação consolida os requisitos técnicos necessários para uma implementação de alta fidelidade do Batalha Naval Web. A aderência a este documento garante um produto final que não é apenas um software funcional, mas um simulador tático robusto.
+
+Checklist de Critérios de Aceite:
+
+* [ ] Testabilidade da IA: A IA entra em Modo Caça em 100% dos casos de teste imediatamente após um acerto confirmado.
+* [ ] Validação de Vitória: O jogo encerra e declara o vencedor exatamente após o 17º acerto na frota adversária.
+* [ ] Integridade de Dados: A IA realiza disparos baseada apenas em seu histórico de acertos/erros, sem acessar a matriz privada do jogador.
+* [ ] Responsividade: O grid 10x10 mantém proporções clicáveis em resoluções de 360px a 1920px de largura.
+* [ ] Persistência de Estado: A função "Reset" limpa todos os logs, reinicia os cronômetros e as matrizes de ambos os jogadores sem recarregar o navegador.
