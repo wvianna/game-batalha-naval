@@ -81,6 +81,29 @@ body {
 .turn-banner--win { background: #0d4a2e; border-color: #7ddfa8; }
 .turn-banner--loss { background: #5a1212; border-color: #e07272; }
 
+/* Controle de som */
+.soundbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.btn--icon {
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  font-size: 1.05rem;
+  line-height: 1;
+}
+input[type='range'] {
+  width: 96px;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+@media (max-width: 560px) {
+  input[type='range'] {
+    width: 70px;
+  }
+}
+
 /* ------------------------------ Layout ------------------------------- */
 .layout {
   display: grid;

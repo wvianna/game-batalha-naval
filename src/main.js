@@ -5,7 +5,7 @@ import { initBoard, renderBoard } from './ui/board.js';
 import { initSetupUI } from './ui/setup.js';
 import { renderMessage, renderLog, renderFleetStatus } from './ui/log.js';
 import { formatCoord } from './ui/format.js';
-import { playShotSound } from './ui/sounds.js';
+import { playShotSound, unlock, setEnabled, setVolume, isEnabled, testSound } from './ui/sounds.js';
 
 const playerBoardEl = document.getElementById('player-board');
 const enemyBoardEl = document.getElementById('enemy-board');
@@ -112,6 +112,41 @@ resetBtn.addEventListener('click', () => {
   game.reset();
   render(game.snapshot());
 });
+
+// ------------------------------------------------------- controle de som --
+const soundBtn = document.getElementById('btn-sound');
+const volumeEl = document.getElementById('volume');
+
+function syncSoundUI() {
+  const on = isEnabled();
+  soundBtn.textContent = on ? '🔊' : '🔇';
+  soundBtn.setAttribute('aria-pressed', String(on));
+  soundBtn.title = on ? 'Silenciar som' : 'Ativar som';
+}
+
+soundBtn.addEventListener('click', () => {
+  const next = !isEnabled();
+  setEnabled(next);
+  syncSoundUI();
+  if (next) {
+    unlock();
+    testSound(); // confirmação audível de que o som está ativo
+  }
+});
+
+volumeEl.addEventListener('input', () => {
+  if (!isEnabled()) setEnabled(true);
+  setVolume(Number(volumeEl.value) / 100);
+  syncSoundUI();
+});
+
+// Desbloqueia o áudio no primeiro gesto do usuário (autoplay dos navegadores).
+document.addEventListener('pointerdown', unlock, { passive: true });
+
+setVolume(Number(volumeEl.value) / 100);
+syncSoundUI();
+
+// ------------------------------------------------------------------------
 
 game.subscribe(render);
 setupUI.mount();
